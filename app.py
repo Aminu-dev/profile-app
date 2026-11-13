@@ -1,6 +1,7 @@
-import os
-from flask import Flask, request, redirect, render_template_string
-from pymongo import MongoClient
+import os  # noqa: I001
+
+from flask import Flask, redirect, render_template_string, request # type: ignore
+from pymongo import MongoClient # pyright: ignore[reportMissingImports]
 
 app = Flask(__name__)
 profiles = MongoClient(os.environ["MONGO_URL"])["profile_db"]["profiles"]
