@@ -1,7 +1,7 @@
 import os  # noqa: I001
 
-from flask import Flask, redirect, render_template_string, request # type: ignore
-from pymongo import MongoClient # pyright: ignore[reportMissingImports]
+from flask import Flask, redirect, render_template_string, request  # type: ignore
+from pymongo import MongoClient  # pyright: ignore[reportMissingImports]
 
 app = Flask(__name__)
 profiles = MongoClient(os.environ["MONGO_URL"])["profile_db"]["profiles"]
@@ -16,6 +16,7 @@ PAGE = """
 </form>
 """
 
+
 @app.route("/", methods=["GET", "POST"])
 def profile():
     if request.method == "POST":
@@ -27,5 +28,6 @@ def profile():
         return redirect("/")
     return render_template_string(PAGE, p=profiles.find_one({"_id": "me"}) or {})
 
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="::", port=5050)
