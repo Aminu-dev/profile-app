@@ -1,4 +1,4 @@
-import os  # noqa: I001
+import os
 
 from flask import Flask, redirect, render_template_string, request  # type: ignore
 from pymongo import MongoClient  # pyright: ignore[reportMissingImports]
